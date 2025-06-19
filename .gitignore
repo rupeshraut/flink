@@ -48,7 +48,7 @@ out/
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 bin/
@@ -64,17 +64,36 @@ bin/
 
 # VS Code
 .vscode/
+*.code-workspace
+
+# IntelliJ IDEA additional patterns
+.idea_modules/
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
 
 # Mac
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
 
 # Windows
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+$RECYCLE.BIN/
 
 # Linux
 *~
+.fuse_hidden*
+.directory
+.Trash-*
 
 # Temporary files
 *.tmp
