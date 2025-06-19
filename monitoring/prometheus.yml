@@ -1,0 +1,47 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Flink JobManager metrics
+  - job_name: 'flink-jobmanager'
+    static_configs:
+      - targets: ['flink-jobmanager:8789']
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Flink TaskManager metrics
+  - job_name: 'flink-taskmanager'
+    static_configs:
+      - targets: ['flink-taskmanager:8789']
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Kafka metrics
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka:9101']
+    metrics_path: /metrics
+    scrape_interval: 15s
+
+  # Application-specific metrics (if exposed via JMX)
+  - job_name: 'flink-application'
+    static_configs:
+      - targets: ['flink-jobmanager:8080']  # Adjust port as needed
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # System metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']  # Add node-exporter if needed
+    scrape_interval: 15s
+
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
